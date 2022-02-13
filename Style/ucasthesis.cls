@@ -128,9 +128,9 @@
 \setlength{\headsep}{17.5pt}% vertical margin between header and body text
 \setlength{\footskip}{10.4mm}% vertical margin between footer and body text
 %- specifies the amount of space between paragraphs.
-\setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
+%\setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
 %- line spacing
-\linespread{1.6}% line space setting
+\linespread{1.38}% line space setting
 \raggedbottom% prevent adding vertical white space in strange places
 %- default pagestyle is page number at bottom without headers and footers
 \pagestyle{plain}
@@ -309,11 +309,11 @@
         \def\tabcolsep{1pt}
         \def\arraystretch{1.3}
         \begin{tabular}{lc}
-            \ucas@label@ch@author & \ulenhance[1.2pt]{\ulextend{\ucas@value@ch@author}}\\
-            \ucas@label@ch@advisor & \ucaslntotab[1.2pt]{\ucas@value@ch@advisor}\\
-            \ucas@label@ch@degree & \ulenhance[1.2pt]{\ulextend{\ucas@value@ch@degreetype\ucas@value@ch@degree}}\\
-            \ucas@label@ch@major & \ulenhance[1.2pt]{\ulextend{\ucas@value@ch@major}}\\
-            \ucas@label@ch@institute & \ucaslntotab[1.2pt]{\ucas@value@ch@institute}\\
+            \ucas@label@ch@author & \ulenhance[1pt]{\ulextend{\ucas@value@ch@author}}\\
+            \ucas@label@ch@advisor & \ucaslntotab[1pt]{\ucas@value@ch@advisor}\\
+            \ucas@label@ch@degree & \ulenhance[1pt]{\ulextend{\ucas@value@ch@degreetype\ucas@value@ch@degree}}\\
+            \ucas@label@ch@major & \ulenhance[1pt]{\ulextend{\ucas@value@ch@major}}\\
+            \ucas@label@ch@institute & \ucaslntotab[1pt]{\ucas@value@ch@institute}\\
         \end{tabular}
 
         \vspace*{\stretch{4}}
@@ -500,38 +500,34 @@
     \cleardoublepage
     \thispagestyle{empty}
     {
-        \linespread{1.6}
+        %\linespread{1.6}
         \zihao{-4}
 
         \vspace*{2ex}
 
         \begin{center}
-            {\zihao{4}\bfseries\sffamily \ucas@label@ch@declare@creativity}
+            {\zihao{-2}\bfseries\rmfamily \ucas@label@ch@declare@creativity}
         \end{center}
 
-        {\ucas@value@ch@declare@creativity}
+        {\bfseries \linespread{2} \ucas@value@ch@declare@creativity}
 
         \vspace*{3ex}
 
-        {\hfill{} {\ucas@label@ch@declare@author \hspace*{14em}}}
-
-        {\hfill{} {\ucas@label@ch@declare@date \hspace*{14em}}}
+        {\zihao{5} \bfseries \ucas@label@ch@declare@author \ulenhance[1pt]{\ulextend[7em]{}} \hspace*{3em} {\ucas@label@ch@declare@date \hspace*{4em}年\hspace*{2em}月\hspace*{2em}日}}
 
         \vspace*{6ex}
 
         \begin{center}
-            {\zihao{4}\bfseries\sffamily \ucas@label@ch@declare@rights}
+            {\zihao{-2}\bfseries \rmfamily \ucas@label@ch@declare@rights}
         \end{center}
 
-        {\ucas@value@ch@declare@rights}
+        {\bfseries \ucas@value@ch@declare@rights}
 
-        {\ucas@value@ch@declare@rule}
+        {\bfseries \ucas@value@ch@declare@rule}
 
         \vspace*{3ex}
 
-        {\hfill{} {\ucas@label@ch@declare@author \hspace*{10em} \ucas@label@ch@declare@advisor \hspace*{9em}}}
-
-        {\hfill{} {\ucas@label@ch@declare@date \hspace*{10em} \ucas@label@ch@declare@date \hspace*{9em}}}
+        {\zihao{5} \bfseries \ucas@label@ch@declare@author \ulenhance[1pt]{\ulextend[7em]{}} \hspace*{3em} {\ucas@label@ch@declare@date \hspace*{4em}年\hspace*{2em}月\hspace*{2em}日}}
 
         \vspace*{3ex}
     }
@@ -547,11 +543,11 @@
 %- define chinese keywords
 \newcommand{\keywords}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \ucas@label@ch@keywords} #1}
+    \noindent {\bfseries \sffamily \ucas@label@ch@keywords} #1}
 %- define engish keywords
 \newcommand{\KEYWORDS}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \ucas@label@en@keywords} #1}
+    \noindent {\bfseries \sffamily \ucas@label@en@keywords} #1}
 %---------------------------------------------------------------------------%
 %->> Structure elements
 %---------------------------------------------------------------------------%
@@ -606,35 +602,35 @@
 %- chapter
 \ctexset {
     chapter = {
-        format = \linespread{1.0}\zihao{4}\bfseries\sffamily\centering,
+        format = \linespread{1.0}\zihao{3}\bfseries\sffamily\centering,
         nameformat = {},
         titleformat = {},
         number = \arabic{chapter},
         numberformat = \rmfamily,
         aftername = \quad,
-        beforeskip = {7pt},
-        afterskip = {18pt},
+        beforeskip = {40pt},
+        afterskip = {40pt},
         pagestyle = plain,
     }
 }
 %- section
 \ctexset {
     section = {
-        format = \linespread{1.0}\zihao{-4}\sffamily\raggedright,
+        format = \linespread{1.0}\zihao{-3}\bfseries\sffamily\raggedright,
         numberformat = \rmfamily,
         aftername = \quad,
-        beforeskip = {24pt},
-        afterskip = {6pt},
+        beforeskip = {30pt},
+        afterskip = {30pt},
     }
 }
 %- subsection
 \ctexset {
     subsection = {
-        format = \linespread{1.0}\zihao{-4}\sffamily\raggedright,
+        format = \linespread{1.0}\zihao{4}\bfseries\sffamily\raggedright,
         numberformat = \rmfamily,
         aftername = \quad,
-        beforeskip = {12pt},
-        afterskip = {6pt},
+        beforeskip = {20pt},
+        afterskip = {20pt},
     }
 }
 %- subsubsection
@@ -728,8 +724,9 @@
         \endgroup
     \fi
 }
+
 %- redefine indentation for others
-\renewcommand*\l@section{\@dottedtocline{1}{1em}{1.8em}}
+\renewcommand*\l@section{\zihao{-4}\rmfamily\@dottedtocline{1}{1em}{1.8em}}
 \renewcommand*\l@subsection{\@dottedtocline{2}{2em}{2.8em}}
 \renewcommand*\l@subsubsection{\@dottedtocline{3}{3em}{3.8em}}
 \renewcommand*\l@paragraph{\@dottedtocline{4}{4em}{4.8em}}
@@ -737,5 +734,7 @@
 \renewcommand*\l@figure{\@dottedtocline{1}{1em}{1.8em}}
 \renewcommand*\l@table{\@dottedtocline{1}{1em}{1.8em}}
 %---------------------------------------------------------------------------%
+
+
 \endinput
 

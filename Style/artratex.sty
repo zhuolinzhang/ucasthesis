@@ -547,7 +547,7 @@
 %-> Figure environment support
 %-
 \RequirePackage{graphicx}% packages for including graphics
-\RequirePackage[format=plain,hangindent=2.0em,font={small,bf},skip=8pt,labelsep=space]{caption}% options: [margin=10pt,labelfont=bf]
+\RequirePackage[format=plain,hangindent=2.0em,font={small,rm},skip=8pt,labelsep=space]{caption}% options: [margin=10pt,labelfont=bf]
 \RequirePackage{subcaption}% package for subfigures
 \RequirePackage[list=off]{bicaption}% package for binary captions
 \DeclareCaptionOption{bi-first}[]{}% 1st language
@@ -673,11 +673,11 @@
 \setcounter{secnumdepth}{3}% depth for section numbering, default is 2(subsub)
 %- Set equation, figure, table numbering
 %\numberwithin{equation}{section}% set enumeration level
-%\renewcommand{\theequation}{\thesection\arabic{equation}}% configure the label style
+\renewcommand{\theequation}{\thechapter-\arabic{equation}}% configure the label style
 %\numberwithin{figure}{section}% set enumeration level
-%\renewcommand{\thefigure}{\thesection\arabic{figure}}% configure the label style
+\renewcommand{\thefigure}{\thechapter-\arabic{figure}}% configure the label style
 %\numberwithin{table}{section}% set enumeration level
-%\renewcommand{\thetable}{\thesection\arabic{table}}% configure the label style
+\renewcommand{\thetable}{\thechapter-\arabic{table}}% configure the label style
 %- Set bibliography entry
 \ifartx@bibtex%
     \setlength{\bibsep}{0.0ex plus 0.2ex minus 0.2ex}% set distance between entries
@@ -710,24 +710,36 @@
     %- Deactivate uppercase effect
     \renewcommand{\MakeUppercase}[1]{#1}%
     %- Define different kinds of header and footer for different parts
+    \newdimen\doublelineskip
+    \setlength\doublelineskip{2pt}
+    \newdimen\headrulewidthA
+    \setlength\headrulewidthA{3pt}
+    \newdimen\headrulewidthB
+    \setlength\headrulewidthB{.4pt}
     \fancypagestyle{frontmatterstyle}{% style for frontmatter
         \fancyhf{}% clear fields
-        \fancyhead[C]{\footnotesize \ifnumodd{\value{page}}{\leftmark}{\@title}}% structure elements
-        \fancyfoot[C]{\footnotesize \thepage}% page number
-        \renewcommand{\headrulewidth}{0.8pt}% header rule
+        %\fancyhead[C]{\footnotesize \ifnumodd{\value{page}}{\leftmark}{\@title}}% structure elements
+        \fancyfoot[C]{\zihao{-5} \thepage}% page number
+        \renewcommand{\headrulewidth}{0pt}% header rule
         \renewcommand{\footrulewidth}{0pt}% footer rule
     }
     \fancypagestyle{mainmatterstyle}{% style for mainmatter
         \fancyhf{}% clear fields
-        \fancyhead[C]{\footnotesize \ifnumodd{\value{page}}{\leftmark}{\@title}}% structure elements
-        \fancyfoot[C]{\footnotesize \ifnumodd{\value{page}}{\hspace*{\fill}\thepage}{\thepage\hspace*{\fill}}}% page number
-        \renewcommand{\headrulewidth}{0.8pt}% header rule
+        \fancyhead[C]{\zihao{-5} \ifnumodd{\value{page}}{\leftmark}{陕西师范大学硕士学位论文}}% structure elements
+        \fancyfoot[C]{\zihao{-5} \ifnumodd{\value{page}}{-\ \thepage\ -}{-\ \thepage\ -}}% page number
+        %\renewcommand{\headrulewidth}{0.8pt}% header rule
+        \renewcommand\headrule{%
+            \hrule height\headrulewidthA width\headwidth%
+            \vskip \doublelineskip%
+            \hrule height\headrulewidthB width\headwidth}
         \renewcommand{\footrulewidth}{0pt}% footer rule
     }
     \fancypagestyle{backmatterstyle}{% header and footer style for backmatter
         \fancyhf{}% clear fields
-        \fancyhead[C]{\footnotesize \ifnumodd{\value{page}}{\leftmark}{\@title}}% structure elements
-        \fancyfoot[C]{\footnotesize \ifnumodd{\value{page}}{\hspace*{\fill}\thepage}{\thepage\hspace*{\fill}}}% page number
+        \fancyhead[C]{\zihao{-5} \ifnumodd{\value{page}}{\leftmark}{陕西师范大学硕士学位论文}}% structure elements
+        \fancyfoot[C]{\zihao{-5} \ifnumodd{\value{page}}{-\ \thepage\ -}{-\ \thepage\ -}}% page number
+        %\fancyhead[C]{\footnotesize \ifnumodd{\value{page}}{\leftmark}{\@title}}% structure elements
+        %\fancyfoot[C]{\footnotesize \ifnumodd{\value{page}}{\hspace*{\fill}\thepage}{\thepage\hspace*{\fill}}}% page number
         \renewcommand{\headrulewidth}{0.8pt}% header rule
         \renewcommand{\footrulewidth}{0pt}% footer rule
     }
@@ -853,6 +865,19 @@
     \definecolor{backgroundcolor}{rgb}{0.85,0.85,0.85}%
     \pagecolor{backgroundcolor}% background color
 \fi
+
+\RequirePackage{tocloft}
+\renewcommand{\contentsname}{\hfill\zihao{3}\sffamily 目\quad 录\hfill}
+\renewcommand{\listfigurename}{\hfill\zihao{3}\sffamily 图\quad 目\quad 录\hfill}
+\renewcommand{\listtablename}{\hfill\zihao{3}\sffamily 表\quad 目\quad 录\hfill}
+\renewcommand\cftdot{⋯}
+\renewcommand{\cftdotsep}{0}
+\setlength\cftbeforetoctitleskip{2ex}
+\setlength\cftaftertoctitleskip{2ex}
+\renewcommand\cftchapfont{\sffamily \zihao{4}}
+%\setlength\cftbeforechapskip{10pt}
+%\setlength\cftbeforesecskip{20pt}
+\renewcommand\cftsecfont{\rmfamily \zihao{-4}}
 %---------------------------------------------------------------------------%
 \endinput
 
