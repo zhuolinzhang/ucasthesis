@@ -130,7 +130,7 @@
 %- specifies the amount of space between paragraphs.
 %\setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
 %- line spacing
-\linespread{1.38}% line space setting
+\linespread{1.3}% line space setting
 \raggedbottom% prevent adding vertical white space in strange places
 %- default pagestyle is page number at bottom without headers and footers
 \pagestyle{plain}
@@ -543,11 +543,11 @@
 %- define chinese keywords
 \newcommand{\keywords}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \sffamily \ucas@label@ch@keywords} #1}
+    \noindent {\bfseries \sffamily \ucas@label@ch@keywords #1}}
 %- define engish keywords
 \newcommand{\KEYWORDS}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \sffamily \ucas@label@en@keywords} #1}
+    \noindent {\bfseries \fontspec{Arial} \fontsize{12pt}{15pt} \ucas@label@en@keywords\ #1}}
 %---------------------------------------------------------------------------%
 %->> Structure elements
 %---------------------------------------------------------------------------%
@@ -602,35 +602,35 @@
 %- chapter
 \ctexset {
     chapter = {
-        format = \linespread{1.0}\zihao{3}\bfseries\sffamily\centering,
+        format = \linespread{1.0}\zihao{3}\sffamily\centering,
         nameformat = {},
         titleformat = {},
         number = \arabic{chapter},
         numberformat = \rmfamily,
         aftername = \quad,
-        beforeskip = {40pt},
-        afterskip = {40pt},
+        beforeskip = {2.4ex},
+        afterskip = {2.4ex},
         pagestyle = plain,
     }
 }
 %- section
 \ctexset {
     section = {
-        format = \linespread{1.0}\zihao{-3}\bfseries\sffamily\raggedright,
+        format = \linespread{1.0}\zihao{-3}\sffamily\raggedright,
         numberformat = \rmfamily,
         aftername = \quad,
-        beforeskip = {30pt},
-        afterskip = {30pt},
+        beforeskip = {2ex},
+        afterskip = {2ex},
     }
 }
 %- subsection
 \ctexset {
     subsection = {
-        format = \linespread{1.0}\zihao{4}\bfseries\sffamily\raggedright,
+        format = \linespread{1}\zihao{4}\sffamily\raggedright,
         numberformat = \rmfamily,
         aftername = \quad,
-        beforeskip = {20pt},
-        afterskip = {20pt},
+        beforeskip = {2ex},
+        afterskip = {2ex},
     }
 }
 %- subsubsection

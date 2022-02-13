@@ -417,6 +417,7 @@
     ]
     }{%
     \RequirePackage{newtxtext}% main font
+    \newfontfamily\arialfamily{Arial}
     \RequirePackage[cmintegrals]{newtxmath}% times font, load after amsmath and newtxtext packages
     \RequirePackage{mathrsfs}% enable \mathscr for script alphabet
     \RequirePackage[cal=cm]{mathalfa}% map styles for calligraphic \mathcal and script \mathscr alphabet
@@ -552,8 +553,8 @@
 \RequirePackage[list=off]{bicaption}% package for binary captions
 \DeclareCaptionOption{bi-first}[]{}% 1st language
 \DeclareCaptionOption{bi-second}[]{% 2nd language
-    \def\tablename{Table}%
-    \def\figurename{Figure}%
+    \def\tablename{Tab.}%
+    \def\figurename{Fig.}%
 }
 \captionsetup[bi-first]{bi-first}%
 \captionsetup[bi-second]{bi-second}%
