@@ -553,8 +553,8 @@
 \RequirePackage[list=off]{bicaption}% package for binary captions
 \DeclareCaptionOption{bi-first}[]{}% 1st language
 \DeclareCaptionOption{bi-second}[]{% 2nd language
-    \def\tablename{Tab.}%
-    \def\figurename{Fig.}%
+    \def\tablename{Tab.}% update the table caption style to Tab. X-Y
+    \def\figurename{Fig.}% update the figure caption style to Fig. X-Y
 }
 \captionsetup[bi-first]{bi-first}%
 \captionsetup[bi-second]{bi-second}%
@@ -666,7 +666,7 @@
 %-> Layout, space, and style
 %-
 \ifartx@geometry% enable geometry to redefine page layout
-    \geometry{paper=a4paper,left=31.7mm,right=31.7mm,top=25.4mm,bottom=25.4mm,headheight=12pt,headsep=17.5pt,footskip=10.4mm}%
+    \geometry{paper=a4paper,left=30mm,right=30mm,top=36mm,bottom=25mm,headheight=2mm,headsep=20pt,footskip=5mm}%
 \fi
 %\linespread{1.5}% 1.5 for "one and a half" line spacing, and 2.0 for "double" line spacing
 %\setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}% skip space a paragraph
@@ -711,6 +711,10 @@
     %- Deactivate uppercase effect
     \renewcommand{\MakeUppercase}[1]{#1}%
     %- Define different kinds of header and footer for different parts
+    %- 根据陕师大研究生学位论文规范，将页眉调整为仅在正文出现，为上粗下细的文武线，粗线宽度3pt
+    %- 页眉偶数页为“陕西师范大学X士学位论文，奇数页为章节标题，五号宋体
+    %- 页脚frontmatter部分为罗马数字，正文部分应为- x -，小五宋体
+    %- Define double lines
     \newdimen\doublelineskip
     \setlength\doublelineskip{2pt}
     \newdimen\headrulewidthA
@@ -726,7 +730,7 @@
     }
     \fancypagestyle{mainmatterstyle}{% style for mainmatter
         \fancyhf{}% clear fields
-        \fancyhead[C]{\zihao{-5} \ifnumodd{\value{page}}{\leftmark}{陕西师范大学硕士学位论文}}% structure elements
+        \fancyhead[C]{\zihao{5} \ifnumodd{\value{page}}{\leftmark}{\ucas@value@ch@school \ucas@label@ch@thesis}}% structure elements
         \fancyfoot[C]{\zihao{-5} \ifnumodd{\value{page}}{-\ \thepage\ -}{-\ \thepage\ -}}% page number
         %\renewcommand{\headrulewidth}{0.8pt}% header rule
         \renewcommand\headrule{%
@@ -737,7 +741,7 @@
     }
     \fancypagestyle{backmatterstyle}{% header and footer style for backmatter
         \fancyhf{}% clear fields
-        \fancyhead[C]{\zihao{-5} \ifnumodd{\value{page}}{\leftmark}{陕西师范大学硕士学位论文}}% structure elements
+        \fancyhead[C]{\zihao{5} \ifnumodd{\value{page}}{\leftmark}{\ucas@value@ch@school \ucas@label@ch@thesis}}% structure elements
         \fancyfoot[C]{\zihao{-5} \ifnumodd{\value{page}}{-\ \thepage\ -}{-\ \thepage\ -}}% page number
         %\fancyhead[C]{\footnotesize \ifnumodd{\value{page}}{\leftmark}{\@title}}% structure elements
         %\fancyfoot[C]{\footnotesize \ifnumodd{\value{page}}{\hspace*{\fill}\thepage}{\thepage\hspace*{\fill}}}% page number
@@ -867,18 +871,6 @@
     \pagecolor{backgroundcolor}% background color
 \fi
 
-\RequirePackage{tocloft}
-\renewcommand{\contentsname}{\hfill\zihao{3}\sffamily 目\quad 录\hfill}
-\renewcommand{\listfigurename}{\hfill\zihao{3}\sffamily 图\quad 目\quad 录\hfill}
-\renewcommand{\listtablename}{\hfill\zihao{3}\sffamily 表\quad 目\quad 录\hfill}
-\renewcommand\cftdot{⋯}
-\renewcommand{\cftdotsep}{0}
-\setlength\cftbeforetoctitleskip{2ex}
-\setlength\cftaftertoctitleskip{2ex}
-\renewcommand\cftchapfont{\sffamily \zihao{4}}
-%\setlength\cftbeforechapskip{10pt}
-%\setlength\cftbeforesecskip{20pt}
-\renewcommand\cftsecfont{\rmfamily \zihao{-4}}
 %---------------------------------------------------------------------------%
 \endinput
 

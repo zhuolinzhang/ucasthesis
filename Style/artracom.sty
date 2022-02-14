@@ -106,5 +106,28 @@
 %-
 \newcommand{\adddotsbeforeeqnnum}{\def\maketag@@@##1{\hbox{\m@th\normalfont\dots\ ##1}}}%
 %---------------------------------------------------------------------------%
+\RequirePackage{eso-pic} % add the background picture to the cover
+
+%- Change the toc style
+\RequirePackage{tocloft}
+\renewcommand{\contentsname}{\hfill\zihao{3}\sffamily 目\quad 录\hfill}
+\renewcommand{\listfigurename}{\hfill\zihao{3}\sffamily 图\quad 目\quad 录\hfill}
+\renewcommand{\listtablename}{\hfill\zihao{3}\sffamily 表\quad 目\quad 录\hfill}
+\renewcommand\cftdot{⋯}
+\renewcommand{\cftdotsep}{0}
+\setlength\cftbeforetoctitleskip{2ex}
+\setlength\cftaftertoctitleskip{2ex}
+\renewcommand\cftchapfont{\sffamily \zihao{4}}
+\renewcommand\cftsecfont{\rmfamily \zihao{-4}}
+\newlength{\mylen}
+%\setlength{\mylen}{1.5em}
+\renewcommand{\cftfigpresnum}{\figurename\enspace}
+\renewcommand{\cftfigaftersnum}{}
+\settowidth{\mylen}{\cftfigpresnum\cftfigaftersnum}
+\addtolength{\cftfignumwidth}{\mylen}
+\renewcommand{\cfttabpresnum}{\tablename\enspace}
+\renewcommand{\cfttabaftersnum}{}
+\settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
+\addtolength{\cfttabnumwidth}{\mylen}
 \endinput
 

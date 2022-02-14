@@ -130,7 +130,7 @@
 %- specifies the amount of space between paragraphs.
 %\setlength{\parskip}{0.5ex plus 0.25ex minus 0.25ex}
 %- line spacing
-\linespread{1.3}% line space setting
+\linespread{1.3}% line space setting - approximate 20pt in Word
 \raggedbottom% prevent adding vertical white space in strange places
 %- default pagestyle is page number at bottom without headers and footers
 \pagestyle{plain}
@@ -155,7 +155,7 @@
     \setlength{\ULdepth}{0.5em}% set depth
     \expandafter\ulunify\expandafter{#2}% linebreak fix
 }
-\newcommand{\ulhshift}{-4em}% horizontal shift on underline
+\newcommand{\ulhshift}{0em}% horizontal shift on underline, default=-4em, remove the left shift
 \newcommand{\ulextend}[2][350pt]{% extend underline length
     \hbox to #1{\hfill\hspace*{\ulhshift}#2\hfill}}
 %---------------------------------------------------------------------------%
@@ -170,6 +170,8 @@
 \newcommand{\orderid}[1]{\def\ucas@value@ch@orderid{#1}}
 \def\ucas@value@ch@classid{}
 \newcommand{\classid}[1]{\def\ucas@value@ch@classid{#1}}
+\def\ucas@value@ch@studentid{} % 定义学号
+\newcommand{\studentid}[1]{\def\ucas@value@ch@studentid{#1}}
 \def\ucas@value@ch@udc{}
 \newcommand{\udc}[1]{\def\ucas@value@ch@udc{#1}}
 \def\ucas@value@ch@schoollogo{}
@@ -190,6 +192,8 @@
 \newcommand{\degree}[1]{\def\ucas@value@ch@degree{#1}}
 \def\ucas@value@ch@degreetype{}
 \newcommand{\degreetype}[1]{\def\ucas@value@ch@degreetype{#1}}
+\def\ucas@value@ch@firstlvdiscipline{} % 定义一级学科名，默认的major为二级学科
+\newcommand{\firstlvdiscipline}[1]{\def\ucas@value@ch@firstlvdiscipline{#1}}
 \def\ucas@value@ch@subject{}
 \newcommand{\subject}[1]{\def\ucas@value@ch@subject{#1}}
 \def\ucas@value@ch@major{}
@@ -287,38 +291,38 @@
     \cleardoublepage
     \thispagestyle{empty}
     \begin{center}
-        \linespread{1.6}
-        \zihao{4}\bfseries
+        \linespread{1.6} % 2x line spacing in Word
+        \zihao{4}
+        \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{Img/snnu_background.png}} % add background pictrue
+        %\ucasifstrbk{\ucas@value@ch@confidential}{}{\ucas@label@ch@confidential \ulenhance{\ulextend[50pt]{\ucas@value@ch@confidential}}}\hfill
+        \vspace*{\stretch{-10}}
+        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@classid}\ulenhance{\ulextend[10em]{\zihao{-3} \ucas@value@ch@classid}} \hfill \hspace*{0em}
 
-        \hfill{} \ucasifstrbk{\ucas@value@ch@confidential}{}{\ucas@label@ch@confidential \ulenhance{\ulextend[50pt]{\hspace*{-\ulhshift}\zihao{5}\ucas@value@ch@confidential}}}
+        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@confidential}\ulenhance{\ulextend[10em]{\zihao{-3} \ucas@value@ch@confidential}} \hfill \hspace*{0em}
 
-        \vspace*{\stretch{4}}
+        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3}  \ucas@label@ch@studentid}\ulenhance{\ulextend[10em]{\zihao{-3} \ucas@value@ch@studentid}} \hfill \hspace*{0em}
 
-        {\ucas@value@ch@schoollogo}
+        %{\ucas@value@ch@schoollogo} % disable the UCAS logo
+        %{\zihao{1}\bfseries\sffamily {\ucas@label@ch@thesis}}
 
-        \vspace*{\stretch{2}}
+        \vspace*{\stretch{35}}
 
-        {\zihao{1}\bfseries\sffamily {\ucas@label@ch@thesis}}
+        \hspace*{-4em}{\zihao{3}\bfseries\sffamily 题\quad \nolinebreak 目 \nolinebreak \ulenhance[1.5pt]{\ulextend[30em]{\ucas@value@ch@title}}} % change the underline length by the optional parameter in ulextend
+        %\begin{tabular}{lc}
+            %\zihao{3}\bfseries\sffamily 题\quad 目 & \ucaslntotab[1.5pt]{\ucas@value@ch@title} \\
+        %\end{tabular}
 
-        \vspace*{\stretch{3}}
-
-        {\zihao{-3}\bfseries\sffamily \ulenhance[1.5pt]{\ucas@value@ch@title}}
-
-        \vspace*{\stretch{3}}
+        \vspace*{\stretch{20}}
 
         \def\tabcolsep{1pt}
         \def\arraystretch{1.3}
         \begin{tabular}{lc}
-            \ucas@label@ch@author & \ulenhance[1pt]{\ulextend{\ucas@value@ch@author}}\\
-            \ucas@label@ch@advisor & \ucaslntotab[1pt]{\ucas@value@ch@advisor}\\
-            \ucas@label@ch@degree & \ulenhance[1pt]{\ulextend{\ucas@value@ch@degreetype\ucas@value@ch@degree}}\\
-            \ucas@label@ch@major & \ulenhance[1pt]{\ulextend{\ucas@value@ch@major}}\\
-            \ucas@label@ch@institute & \ucaslntotab[1pt]{\ucas@value@ch@institute}\\
+            \makebox[8em][s]{\zihao{3}\sffamily\ucas@label@ch@author} & \ulenhance[1pt]{\ulextend[15em]{\kaishu \ucas@value@ch@author}}\\
+            \makebox[8em][s]{\zihao{3}\sffamily\ucas@label@ch@advisor} & \ulenhance[1pt]{\ulextend[15em]{\kaishu \ucas@value@ch@advisor}}\\
+            \makebox[8em][s]{\zihao{3}\sffamily\ucas@label@ch@firstlvdiscipline} & \ulenhance[1pt]{\ulextend[15em]{\kaishu \ucas@value@ch@degreetype\ucas@value@ch@firstlvdiscipline}}\\
+            \makebox[8em][s]{\zihao{3}\sffamily\ucas@label@ch@major} & \ulenhance[1pt]{\ulextend[15em]{\kaishu \ucas@value@ch@major}}\\
+            \makebox[8em][s]{\zihao{3}\sffamily 提交日期} & \ulenhance[1pt]{\ulextend[15em]{\kaishu \ucas@value@ch@date}}\\
         \end{tabular}
-
-        \vspace*{\stretch{4}}
-
-        {\ucas@value@ch@date}
 
         \vspace*{\stretch{4}}
     \end{center}
@@ -500,7 +504,7 @@
     \cleardoublepage
     \thispagestyle{empty}
     {
-        %\linespread{1.6}
+        \linespread{1.65} % approximate the 2x line spacing in Word
         \zihao{-4}
 
         \vspace*{2ex}
@@ -509,7 +513,7 @@
             {\zihao{-2}\bfseries\rmfamily \ucas@label@ch@declare@creativity}
         \end{center}
 
-        {\bfseries \linespread{2} \ucas@value@ch@declare@creativity}
+        {\bfseries \ucas@value@ch@declare@creativity}
 
         \vspace*{3ex}
 
@@ -543,11 +547,11 @@
 %- define chinese keywords
 \newcommand{\keywords}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \sffamily \ucas@label@ch@keywords #1}}
+    \noindent {\bfseries \sffamily \ucas@label@ch@keywords #1}} % set the font to Heiti, xiaosi
 %- define engish keywords
 \newcommand{\KEYWORDS}[1]{%
     \vspace{\baselineskip}
-    \noindent {\bfseries \fontspec{Arial} \fontsize{12pt}{15pt} \ucas@label@en@keywords\ #1}}
+    \noindent {\bfseries \fontspec{Arial} \fontsize{12pt}{15pt} \ucas@label@en@keywords\ #1}} % set the font of key words to Arial, 12pt, bold
 %---------------------------------------------------------------------------%
 %->> Structure elements
 %---------------------------------------------------------------------------%
@@ -600,40 +604,44 @@
 %->> Structure layout
 %---------------------------------------------------------------------------%
 %- chapter
+%- 标题段前短后间距及字号尽量贴近陕师大研究生学位论文规范中的规定，但规定中的行距完全基于Word
+%- 设置尽量贴近Word展现出的效果，需要Arial字体提供近似黑体数字的显示效果
 \ctexset {
     chapter = {
         format = \linespread{1.0}\zihao{3}\sffamily\centering,
-        nameformat = {},
-        titleformat = {},
+        titleformat = {\fontspec{Arial}},
         number = \arabic{chapter},
-        numberformat = \rmfamily,
+        numberformat = {\fontspec{Arial}},
         aftername = \quad,
-        beforeskip = {2.4ex},
-        afterskip = {2.4ex},
-        pagestyle = plain,
+        beforeskip = {20pt},
+        afterskip = {40pt},
+        pagestyle = plain
     }
 }
 %- section
 \ctexset {
     section = {
         format = \linespread{1.0}\zihao{-3}\sffamily\raggedright,
-        numberformat = \rmfamily,
+        titleformat = {\fontspec{Arial}},
+        numberformat = {\fontspec{Arial}},
         aftername = \quad,
-        beforeskip = {2ex},
-        afterskip = {2ex},
+        beforeskip = {26pt},
+        afterskip = {26pt}
     }
 }
 %- subsection
 \ctexset {
     subsection = {
         format = \linespread{1}\zihao{4}\sffamily\raggedright,
-        numberformat = \rmfamily,
+        titleformat = {\fontspec{Arial}},
+        numberformat = {\fontspec{Arial}},
         aftername = \quad,
-        beforeskip = {2ex},
-        afterskip = {2ex},
+        beforeskip = {20pt},
+        afterskip = {20pt},
     }
 }
 %- subsubsection
+%- 因规范中规定的标题仅有三级，故没有修改subsubsection的字号大小及段前短后间距
 \ctexset {
     subsubsection = {
         format = \linespread{1.0}\zihao{-4}\sffamily\raggedright,
@@ -652,6 +660,7 @@
 }
 %---------------------------------------------------------------------------%
 %->> Configure table of contents
+%- The configuration is disabled by tocloft package
 %---------------------------------------------------------------------------%
 %- the table of contents is specified by defining \l@chapter, \l@section, ...
 %- most commands are then defined with the \@dottedtocline:
@@ -734,7 +743,4 @@
 \renewcommand*\l@figure{\@dottedtocline{1}{1em}{1.8em}}
 \renewcommand*\l@table{\@dottedtocline{1}{1em}{1.8em}}
 %---------------------------------------------------------------------------%
-
-
 \endinput
-
