@@ -110,9 +110,15 @@
 
 %- Change the toc style
 \RequirePackage{tocloft}
-\renewcommand{\contentsname}{\hfill\zihao{3}\sffamily 目\quad 录\hfill}
-\renewcommand{\listfigurename}{\hfill\zihao{3}\sffamily 图\quad 目\quad 录\hfill}
-\renewcommand{\listtablename}{\hfill\zihao{3}\sffamily 表\quad 目\quad 录\hfill}
+\renewcommand{\contentsname}{目\quad 录}
+\renewcommand{\cfttoctitlefont}{\hfill\zihao{3}\sffamily}
+\renewcommand{\cftaftertoctitle}{\hfill}
+\renewcommand{\listfigurename}{图\quad 目\quad 录}
+\renewcommand{\cftloftitlefont}{\hfill\zihao{3}\sffamily}
+\renewcommand{\cftafterloftitle}{\hfill}
+\renewcommand{\listtablename}{表\quad 目\quad 录}
+\renewcommand{\cftlottitlefont}{\hfill\zihao{3}\sffamily}
+\renewcommand{\cftafterlottitle}{\hfill}
 \renewcommand\cftdot{⋯}
 \renewcommand{\cftdotsep}{0}
 \setlength\cftbeforetoctitleskip{2ex}
@@ -129,5 +135,3 @@
 \renewcommand{\cfttabaftersnum}{}
 \settowidth{\mylen}{\cfttabpresnum\cfttabaftersnum}
 \addtolength{\cfttabnumwidth}{\mylen}
-\endinput
-
