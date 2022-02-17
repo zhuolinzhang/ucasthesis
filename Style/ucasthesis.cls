@@ -291,16 +291,16 @@
     \cleardoublepage
     \thispagestyle{empty}
     \begin{center}
-        \linespread{1.6} % 2x line spacing in Word
+        \linespread{1.67} % 2x line spacing in Word
         \zihao{4}
         \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{Img/snnu_background.png}} % add background pictrue
         %\ucasifstrbk{\ucas@value@ch@confidential}{}{\ucas@label@ch@confidential \ulenhance{\ulextend[50pt]{\ucas@value@ch@confidential}}}\hfill
         \vspace*{\stretch{-10}}
-        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@classid}\ulenhance{\ulextend[10em]{\zihao{-3} \ucas@value@ch@classid}} \hfill \hspace*{0em}
+        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@classid}\ulenhance{\ulextend[10em]{\ucas@value@ch@classid}} \hfill \hspace*{0em}
 
-        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@confidential}\ulenhance{\ulextend[10em]{\zihao{-3} \ucas@value@ch@confidential}} \hfill \hspace*{0em}
+        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@confidential}\ulenhance{\ulextend[10em]{\kaishu \ucas@value@ch@confidential}} \hfill \hspace*{0em}
 
-        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3}  \ucas@label@ch@studentid}\ulenhance{\ulextend[10em]{\zihao{-3} \ucas@value@ch@studentid}} \hfill \hspace*{0em}
+        \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@studentid}\ulenhance{\ulextend[10em]{\ucas@value@ch@studentid}} \hfill \hspace*{0em}
 
         %{\ucas@value@ch@schoollogo} % disable the UCAS logo
         %{\zihao{1}\bfseries\sffamily {\ucas@label@ch@thesis}}
@@ -504,7 +504,7 @@
     \cleardoublepage
     \thispagestyle{empty}
     {
-        \linespread{1.65} % approximate the 2x line spacing in Word
+        \linespread{1.67} % approximate the 2x line spacing in Word
         \zihao{-4}
 
         \vspace*{2ex}
@@ -517,7 +517,7 @@
 
         \vspace*{3ex}
 
-        {\zihao{5} \bfseries \ucas@label@ch@declare@author \ulenhance[1pt]{\ulextend[7em]{}} \hspace*{3em} {\ucas@label@ch@declare@date \hspace*{4em}年\hspace*{2em}月\hspace*{2em}日}}
+        {\zihao{5} \bfseries \ucas@label@ch@declare@author \ulenhance[1pt]{\ulextend[7em]{}} \hfill {\ucas@label@ch@declare@date \hspace*{4em}年\hspace*{2em}月\hspace*{2em}日}}
 
         \vspace*{6ex}
 
@@ -531,7 +531,7 @@
 
         \vspace*{3ex}
 
-        {\zihao{5} \bfseries \ucas@label@ch@declare@author \ulenhance[1pt]{\ulextend[7em]{}} \hspace*{3em} {\ucas@label@ch@declare@date \hspace*{4em}年\hspace*{2em}月\hspace*{2em}日}}
+        {\zihao{5} \bfseries \ucas@label@ch@declare@author \ulenhance[1pt]{\ulextend[7em]{}} \hfill {\ucas@label@ch@declare@date \hspace*{4em}年\hspace*{2em}月\hspace*{2em}日}}
 
         \vspace*{3ex}
     }
