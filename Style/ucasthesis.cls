@@ -293,7 +293,10 @@
     \begin{center}
         \linespread{1.67} % 2x line spacing in Word
         \zihao{4}
-        \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{Img/snnu_background.png}} % add background pictrue
+        \ifucas@print % only print the cover background when the option is not print
+        \else
+            \AddToShipoutPictureBG*{\includegraphics[width=\paperwidth,height=\paperheight]{Img/snnu_background.png}} % add background pictrue on the cover
+        \fi
         %\ucasifstrbk{\ucas@value@ch@confidential}{}{\ucas@label@ch@confidential \ulenhance{\ulextend[50pt]{\ucas@value@ch@confidential}}}\hfill
         \vspace*{\stretch{-10}}
         \hspace*{-4em} \makebox[4em][s]{\sffamily \zihao{3} \ucas@label@ch@classid}\ulenhance{\ulextend[10em]{\ucas@value@ch@classid}} \hfill \hspace*{0em}
@@ -307,7 +310,7 @@
 
         \vspace*{\stretch{35}}
 
-        \hspace*{-4em}{\zihao{3}\bfseries\sffamily 题\quad \nolinebreak 目 \nolinebreak \ulenhance[1.5pt]{\ulextend[30em]{\ucas@value@ch@title}}} % change the underline length by the optional parameter in ulextend
+        {\zihao{3}\bfseries\sffamily 题\quad \nolinebreak 目 \nolinebreak \ulenhance[1.5pt]{\ulextend[25em]{\ucas@value@ch@title}}} % change the underline length by the optional parameter in ulextend
         %\begin{tabular}{lc}
             %\zihao{3}\bfseries\sffamily 题\quad 目 & \ucaslntotab[1.5pt]{\ucas@value@ch@title} \\
         %\end{tabular}
